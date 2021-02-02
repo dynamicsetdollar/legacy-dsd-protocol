@@ -116,9 +116,6 @@ contract Getters is State {
     }
 
     function balanceOfCoupons(address account, uint256 epoch) public view returns (uint256) {
-        if (outstandingCoupons(epoch) == 0) {
-            return 0;
-        }
         return _state.accounts[account].coupons[epoch];
     }
 
@@ -149,6 +146,10 @@ contract Getters is State {
     /**
      * Epoch
      */
+
+    function price() public view returns (uint256) {
+        return _state13.price.asUint256();
+    }
 
     function epoch() public view returns (uint256) {
         return _state.epoch.current;
